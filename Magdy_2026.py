@@ -262,7 +262,6 @@ else:
         )
 
         run_spatial = st.button(" Spatial Join")
-
     if run_spatial:
         with st.spinner("Reading fileSpatial Join..."):
             try:
@@ -275,15 +274,22 @@ else:
                         right_gdf = right_gdf.to_crs(left_gdf.crs)
 
                 # هنا تنفيد Spatial Join
-                result = gpd.sjoin(
-                    left_gdf,
-                    right_gdf,
-                    how=how_option,
-                    op=spatial_pred,
-                )
+                try:
+                    result = gpd.sjoin(
+                        left_gdf,
+                        right_gdf,
+                        how=how_option,
+                        predicate=spatial_pred,
+                    )
+                except TypeError:
+                    result = gpd.sjoin(
+                        left_gdf,
+                        right_gdf,
+                        how=how_option,
+                        op=spatial_pred,
+                    )
 
                 st.session_state.join_result = result
-
                 if result.empty:
                     st.warning(" No results: No spatial matches were found")
                 else:
