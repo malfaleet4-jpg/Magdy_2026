@@ -1,7 +1,8 @@
 streamlit
-geopandas==1.1.2
+geopandas
 folium
 streamlit-folium
 shapely
 pyproj
 pyarrow
+
