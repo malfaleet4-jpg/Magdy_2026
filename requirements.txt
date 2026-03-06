@@ -2,8 +2,6 @@ streamlit
 geopandas
 folium
 streamlit-folium
-shapely>=2.0
-fiona>=1.9
-pyproj>=3.6
-rtree
+shapely
+pyproj
 pyarrow
