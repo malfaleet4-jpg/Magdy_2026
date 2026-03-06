@@ -1,5 +1,5 @@
 streamlit
-geopandas
+geopandas==1.1.2
 folium
 streamlit-folium
 shapely
